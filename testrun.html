@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Birthday Form</title>
+    <style>
+        * {
+            font-family: monospace;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #032859;
+        }
+
+        .form-container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #08678C;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container #question {
+            padding: 5px;
+        }
+
+        input[type="text"],
+        input[type="submit"],
+        input[type="button"],
+        label {
+            display: block;
+            margin: 10px 0;
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #F9B620;
+            color: black;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"] {
+            background-color: white;
+            color: black;
+        }
+
+
+        input[type="text"]:focus,
+        input[type="submit"]:hover,
+        input[type="button"]:hover,
+        label:hover {
+            border-color: #2196F3;
+        }
+
+        input[type="text"]:focus,
+        input[type="submit"]:focus,
+        input[type="button"]:focus,
+        label:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            cursor: pointer;
+            background-color: #2196F3;
+            color: #fff;
+        }
+
+        input[type="submit"], input[type="button"] {
+            background-color: #F24738;
+            color: black;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        label.checkbox {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        label.checkbox:before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #F24738;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        input[type="checkbox"]:checked+label.checkbox:before {
+            background-color: #F24738;
+            border-color: #F24738;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #032859;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        #popup h1, h2, h4 {
+            color: white;
+        }
+
+        #popup.show {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function validateNameAndID() {
+            var name = document.getElementById("name").value;
+            var studentId = document.getElementById("studentId").value;
+
+            if (name === "" || studentId === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            // Basic student ID validation (9 digits)
+            if (isNaN(studentId) || studentId.length !== 9 || studentId !== "220041117") {
+                alert("Please enter a valid Student ID (9 digits).");
+                return false;
+            }
+
+
+            document.getElementById("question").classList.remove("hidden");
+            return false; // Prevent form submission
+        }
+
+        function showGreetingMessage() {
+            var options = document.getElementsByName("color");
+            var selectedOption = "";
+
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].checked) {
+                    selectedOption = options[i].value;
+                    break;
+                }
+            }
+
+            if (selectedOption === "") {
+                alert("Please choose an option.");
+                return;
+            }
+
+            document.getElementById("popup").classList.add("show");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="form-container">
+        <form onsubmit="return validateNameAndID()">
+            <h1 style="color: #F24738;">Welcome to the DDTVERSE</h1>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="studentId">Student ID</label>
+            <input type="text" id="studentId" name="studentId" required>
+
+            <input type="submit" value="Submit" onclick="return validateNameAndID()">
+        </form>
+
+        <div class="form-container hidden" id="question" style="margin-top: 50px; background-color: #032859">
+            <h2 style="color: #F24738;">How do you like to spend your time?</h2>
+            <form onsubmit="return false;">
+                <input type="checkbox" id="red" name="color" value="Red">
+                <label class="checkbox" for="red" style="color: black;">Sleep</label>
+
+                <input type="checkbox" id="blue" name="color" value="Blue">
+                <label class="checkbox" for="blue" style="color: black;">More Sleep</label>
+
+                <input type="checkbox" id="purple" name="color" value="Purple">
+                <label class="checkbox" for="purple" style="color: black;">Nothing but Sleep</label><br><br>
+
+                <input type="button" value="Submit" onclick="showGreetingMessage()">
+            </form>
+        </div>
+    </div>
+
+    <div id="popup" style="color: black">
+        <h1>Happy Birthday CR afa!</h1>
+        <h2>Here's to a new year of sleeping, sleeping and sleeping!</h2>
+        <h4>Yawn yawn...</h4>
+    </div>
+</body>
+
+</html>
