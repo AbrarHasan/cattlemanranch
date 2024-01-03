@@ -3,219 +3,220 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>DDTVerse</title>
-    <style>
-        * {
-            font-family: monospace;
-        }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            margin-top: 50px;
-            font-family: Arial, sans-serif;
-            background-color: #032859;
-        }
-
-        .form-container {
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #08678C;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-container #question {
-            padding: 5px;
-        }
-
-        input[type="text"],
-        input[type="submit"],
-        input[type="button"],
-        label {
-            display: block;
-            margin: 10px 0;
-            width: calc(100% - 20px);
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-            background-color: #F9B620;
-            color: black;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="text"] {
-            background-color: white;
-            color: black;
-        }
-
-
-        input[type="text"]:focus,
-        input[type="submit"]:hover,
-        input[type="button"]:hover,
-        label:hover {
-            border-color: #2196F3;
-        }
-
-        input[type="text"]:focus,
-        input[type="submit"]:focus,
-        input[type="button"]:focus,
-        label:focus {
-            outline: none;
-            border-color: #2196F3;
-        }
-
-        input[type="submit"],
-        input[type="button"] {
-            cursor: pointer;
-            background-color: #2196F3;
-            color: #fff;
-        }
-
-        input[type="submit"], input[type="button"] {
-            background-color: #F24738;
-            color: black;
-        }
-
-        input[type="checkbox"] {
-            display: none;
-        }
-
-        label.checkbox {
-            position: relative;
-            padding-left: 30px;
-            cursor: pointer;
-            font-size: 14px;
-            color: #333;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        label.checkbox:before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 8px;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #F24738;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        input[type="checkbox"]:checked+label.checkbox:before {
-            background-color: #F24738;
-            border-color: #F24738;
-        }
-
-        #popup {
-            display: none;
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #032859;
-            padding: 20px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        #popup h1, h2, h4 {
-            color: white;
-        }
-
-        #popup.show {
-            display: block;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
-    <script>
-        function validateNameAndID() {
-            var name = document.getElementById("name").value;
-            var studentId = document.getElementById("studentId").value;
-
-            if (name === "" || studentId === "") {
-                alert("Please fill in all fields.");
-                return false;
-            }
-
-            // Basic student ID validation (9 digits)
-            if (isNaN(studentId) || studentId.length !== 9 || studentId !== "220041117") {
-                alert("Please enter a valid Student ID (9 digits).");
-                return false;
-            }
-
-
-            document.getElementById("question").classList.remove("hidden");
-            return false; // Prevent form submission
-        }
-
-        function showGreetingMessage() {
-            var options = document.getElementsByName("color");
-            var selectedOption = "";
-
-            for (var i = 0; i < options.length; i++) {
-                if (options[i].checked) {
-                    selectedOption = options[i].value;
-                    break;
-                }
-            }
-
-            if (selectedOption === "") {
-                alert("Please choose an option.");
-                return;
-            }
-
-            document.getElementById("popup").classList.add("show");
-        }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <title>Cattleman ranch</title>
 </head>
 
 <body>
-    <div class="form-container">
-        <form onsubmit="return validateNameAndID()">
-            <h1 style="color: #F24738;">Welcome to the DDTVERSE</h1>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="studentId">Student ID</label>
-            <input type="text" id="studentId" name="studentId" required>
-
-            <input type="submit" value="Submit" onclick="return validateNameAndID()">
-        </form>
-
-        <div class="form-container hidden" id="question" style="margin-top: 50px; background-color: #032859">
-            <h2 style="color: #F24738;">How do you like to spend your time?</h2>
-            <form onsubmit="return false;">
-                <input type="checkbox" id="red" name="color" value="Red">
-                <label class="checkbox" for="red" style="color: black;">Sleep</label>
-
-                <input type="checkbox" id="blue" name="color" value="Blue">
-                <label class="checkbox" for="blue" style="color: black;">More Sleep</label>
-
-                <input type="checkbox" id="purple" name="color" value="Purple">
-                <label class="checkbox" for="purple" style="color: black;">Nothing but Sleep</label><br><br>
-
-                <input type="button" value="Submit" onclick="showGreetingMessage()">
-            </form>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="images/CMR logo with name-01.png" alt="" height="80px" width="260px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="my-nav-link nav-link" href="site.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link my-nav-link" href="#products-heading">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link my-nav-link" href="#about-heading">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link my-nav-link" href="#contact-heading">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link my-nav-link" href="#">Cart <span class="badge badge-danger">0</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--Welcome section-->
+    <div class="container-fluid" id="section-welcome">
+        <h2>Premium Meat</h2>
+        <h2>Liquid Milk</h2>
+        <h4>Freshness at your doorstep</h4>
+        <a href="#">Explore</a>
+    </div>
+    <hr>
+    <!--Product cards-->
+    <h2 id="products-heading">Our Products</h2>
+    <div class="container-fluid" id="section-products">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card mx-auto" style="width: 21rem;">
+                    <img class="card-img-top" src="images/beef meat poster-01.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Premium Meat</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a class="btn btn-outline-secondary">BDT 700/kg</a>
+                        <a href="#" class="product-card-button btn">Buy now!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card mx-auto" style="width: 21rem;">
+                    <img class="card-img-top" src="images/milk sticker english-01.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Liquid Milk</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a class="btn btn-outline-secondary">BDT 90/Litre</a>
+                        <a href="#" class="product-card-button btn">Buy now!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card mx-auto" style="width: 21rem;">
+                    <img class="card-img-top" src="images/cheese.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Premium Cheese</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a class="btn btn-outline-secondary">TBA</a>
+                        <a href="#" class="product-card-button btn">Coming Soon!</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div id="popup" style="color: black">
-        <h1>Happy Birthday CR afa!</h1>
-        <h2>Here's to a new year of sleeping, sleeping and sleeping!</h2>
-        <h4>Yawn yawn...</h4>
+    <hr>
+    <!--About-->
+    <h2 id="about-heading">About Us</h2>
+    <div class="container-fluid" id="section-about">
+        <div class="row">
+            <div class="col-lg-4 mb-4 ">
+                <div class="card mx-auto" style="width: 21rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Vision</strong><br>Providing fresh and healthy products</li>
+                        <li class="list-group-item"><strong>Focus</strong><br>Beef and milk</li>
+                        <li class="list-group-item"><strong>Principles</strong><br>Sustainability and eco-friendliness
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 ">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi laboriosam ex, quidem, nostrum maiores
+                    itaque eveniet perspiciatis recusandae non quod, libero harum! Neque nihil et itaque autem
+                    doloremque magni vitae.
+                    Vitae fugiat vero pariatur fugit reprehenderit saepe, ullam, adipisci incidunt, dolores sunt
+                    distinctio a debitis! Tempore, odio corporis non nulla amet alias dolores at, voluptatem,
+                    consequatur minus est doloremque et.</p>
+            </div>
+            <div class="col-lg-4 mb-4 text-center">
+                <img src="images/cattleman ranch pfp maroon.jpg" alt="" class="img-fluid" width="60%">
+            </div>
+        </div>
     </div>
+    <hr>
+    <!--The people-->
+    <h2 id="people-heading">The Ranchmen</h2>
+    <div class="container-fluid" id="section-products">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <img class="card-img-top" src="images/placeholder.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">NAF Zara</h5>
+                        <p class="card-text">Chairman</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <img class="card-img-top" src="images/placeholder.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Safwat Yamin Shoumo</h5>
+                        <p class="card-text">Managing Director</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <img class="card-img-top" src="images/placeholder.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Shahriar Rahman</h5>
+                        <p class="card-text">Head of Finance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <img class="card-img-top" src="images/image-abrar.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Abrar Mahmud Hasan</h5>
+                        <p class="card-text">Creative Affairs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!--Contact-->
+    <h2 id="contact-heading">Contact Us</h2>
+    <div class="container-fluid" id="section-contact">
+        <div class="row">
+            <div class="col-lg-4 mb-4 text-center">
+                <h5 class="mb-2" style="font-family: Playfair Display;margin:auto">Connect with us</h5>
+                <div class="card mx-auto" style="width: 21rem;">
+                    <div class="card-body">
+                        <a href="https://www.facebook.com/profile.php?id=61555065422906" target="_blank"
+                            class="card-link btn btn-outline-primary">Facebook</a>
+                        <a href="#" class="card-link btn btn-outline-danger">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 text-center">
+                <h5 style="font-family: Playfair Display;">Send us a message</h5>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2 form-submit-button">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-4 mb-4 ">
+                <div class="card mx-auto" style="width: 21rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Email</strong><br>sample@gmail.com</li>
+                        <li class="list-group-item"><strong>Phone</strong><br>01234567890</li>
+                        <li class="list-group-item"><strong>Location</strong><br>Aminbazar, Savar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <p id="footer-text">&copy; Cattleman Ranch 2023</p>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
