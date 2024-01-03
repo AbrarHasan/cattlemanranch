@@ -1,0 +1,112 @@
+.navbar {
+    background-color: #800;
+}
+.my-nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size:110%;
+}
+.my-nav-link:hover {
+    color: rgba(255, 255, 255, 1) !important;
+}
+hr {
+    width: 50%;
+}
+#section-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#section-welcome h2, h4 {
+    margin-top: 15px;
+}
+#section-welcome h2 {
+    font-size: 3em;
+    font-family: "playfair display", sans-serif;
+}
+#section-welcome h4 {
+    font-size: 2em;
+    background-color: #FAEED1;
+    border-radius: 10px;
+    color: #800;
+    padding: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+@media (max-width:768px) {
+    #section-welcome h4 {
+        font-size: 1.2em;
+    }
+}
+#section-welcome a {
+    box-sizing: border-box;
+    color: white;
+    border-radius: 5px;
+    background-color: #800;
+    border: 1px solid #800;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 110%;
+    padding: 8px;
+    margin-top: 15px;
+}
+#section-welcome a:hover {
+    background-color: #FAEED1;
+    color: #800;
+    border: 1px solid #800;
+    text-decoration: none;
+}
+#section-products {
+    margin-top: 30px;
+}
+#products-heading {
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Playfair Display";
+}
+.product-card-button {
+    color: white;
+    background-color: #800;
+    border: 1px solid #800;
+}
+.product-card-button:hover {
+    color: #800;
+    background-color: #FAEED1;
+}
+#about-heading {
+    text-align: center;
+    font-family: "Playfair Display";
+}
+#section-about {
+    margin-top: 30px;
+}
+#section-about img {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#contact-heading {
+    text-align: center;
+    font-family: "Playfair Display";
+}
+#section-contact {
+    margin-top: 30px;
+}
+.form-submit-button {
+    color: white;
+    background-color: #800;
+    border: 1px solid #800;
+}
+.form-submit-button:hover {
+    color: #800;
+    background-color: #FAEED1;
+    border: 1px solid #800;
+}
+#footer-text {
+    background-color: #800;
+    color: #FAEED1;
+    margin-bottom: 0;
+    text-align: center;
+}
+#people-heading {
+    text-align: center;
+    font-family: "Playfair Display";
+}
